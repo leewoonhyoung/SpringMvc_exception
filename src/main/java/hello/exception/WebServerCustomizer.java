@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 // 넘어와서 보니까 ErrorPage RuntimeException이 존재한다 그럼 /error-page/500 경로에 있는 errorpagecontroller를 호출해
 //오류 페이지 등록
-@Component
+//@Component
 public class WebServerCustomizer implements WebServerFactoryCustomizer<ConfigurableWebServerFactory> {
     @Override
     public void customize(ConfigurableWebServerFactory factory) {

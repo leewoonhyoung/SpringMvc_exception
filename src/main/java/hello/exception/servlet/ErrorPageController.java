@@ -29,7 +29,7 @@ public class ErrorPageController {
     public static final String ERROR_STATUS_CODE = "javax.servlet.error.status_code"; // HTTP   상태 코드
 
 
-    // 1차 오류 PAGE//
+    // static  오류//
     @RequestMapping("/error-page/404")
     public String errorPage404(HttpServletRequest request, HttpServletResponse response){
         log.info("errorPage 404");
@@ -42,11 +42,15 @@ public class ErrorPageController {
         return "error-page/500";
     }
 
-    // 2차 오류 PAGE//
+    // Json api 오류 page 추가//
+    // produces = MediaType.APPLIATION_JSON_VALUE : 클라이언트가 요청하는 Header의 Accept값이 json일때 해당 매소드가 호출 ,
+    //Http Header 의 값이 application/json이라면, api를 호출, 아니라면 html 응답이 출력이 된다.
     @RequestMapping(value = "/error-page/500", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Map<String, Object>> errorPage500Api(HttpServletRequest request, HttpServletResponse response){
         log.info("API errorPage 500");
 
+        //response data를 만들기 위해 Map 을 만들고 Map 안에 status, message 키에 값을 할당한다.
+        //Map을 사용하는 이유는 Jackson library는 Map을 Json 구조로 변환이 가능하기 때문이다.
         Map<String, Object> result = new HashMap<>();
         Exception ex = (Exception) request.getAttribute(ERROR_EXCEPTION);
         result.put("status", request.getAttribute(ERROR_STATUS_CODE));
@@ -55,7 +59,6 @@ public class ErrorPageController {
         Integer statusCode = (Integer) request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
         return new ResponseEntity<>(result, HttpStatus.valueOf(statusCode));
     }
-
 
     private void printErrorInfo(HttpServletRequest request) {
         log.info("ERROR_EXCEPTION: ex=", request.getAttribute(ERROR_EXCEPTION));

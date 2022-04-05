@@ -8,6 +8,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.UUID;
 
+/**
+ * WebConfig를 확인해 보자.
+ *
+LogFilter와 비교해보면 필터는 DispatcherType에 따라 필터를 적용할지 적용할지 선택이 가능하다. 왜냐하면 서블릿이 제공해 주기 때문이다.
+LogInterceptor는 스프링이 제공하는 기능이기 때문에 DispatcherType과는 다르게 항상 호출이 된다.
+ 따라서 오류 페이지 경로를  WebConfig의 excludePathPattern을 이용해서 처리하자.
+ */
+
 @Slf4j
 public class LogInterceptor implements HandlerInterceptor {
 

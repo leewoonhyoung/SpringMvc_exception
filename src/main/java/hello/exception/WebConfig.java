@@ -31,6 +31,17 @@ public class WebConfig implements WebMvcConfigurer {
         filterRegistrationBean.setFilter(new LogFilter());
         filterRegistrationBean.setOrder(1);
         filterRegistrationBean.addUrlPatterns("/*");
+/**
+        과거 filterRegistrationBean 추가된 부분.
+        DispatcherType.REQUEST => 클라이언트 요청시 Filter 호출
+        DispatcherType.ERROR => 오류 페이지 용청시 Filter 호출
+
+        동시에 사용했으므로 클라이언트 요청, 오류 페이지 요청에 Filter가 적용된다.
+
+ 요류 페이지 전용 필터를 적용하고싶으면
+ filterRegistrationBean.setDispatcherTypes(DispatcherType.ERROR)만 적용하면 된다.
+
+ */
         filterRegistrationBean.setDispatcherTypes(DispatcherType.REQUEST,DispatcherType.ERROR);
 
         return filterRegistrationBean;

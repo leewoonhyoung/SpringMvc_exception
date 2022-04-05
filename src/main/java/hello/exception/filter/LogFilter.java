@@ -32,9 +32,9 @@ public class LogFilter implements Filter {
             log.info("REQUEST START = [{}][{}][{}]", uuid, request.getDispatcherType(), requestURI);
             chain.doFilter(request, response);
         } catch (Exception e){
-            throw e; //was 까지 올라간다.
+            throw e; //WAS 까지 올라간다.
         } finally {
-            log.info("RESPONSE=[{}][{}][{}]", uuid, request.getDispatcherType(), requestURI);
+            log.info("RESPONSE=[{}][{}][{}]", uuid, request.getDispatcherType(), requestURI); // 이 부분에 request.getDispatcherType() 추가됨.
         }
 
     }

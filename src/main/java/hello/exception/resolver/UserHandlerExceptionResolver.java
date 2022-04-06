@@ -24,13 +24,21 @@ public class UserHandlerExceptionResolver implements HandlerExceptionResolver {
         try{
             if (ex instanceof UserException){
                 log.info("UserException resolver to 400");
+
+                //request에서 ACCEPT값을 가져와 여기서 ACCEPT 값은 appliation/json 같은 형식의 값이다.
                 String acceptHeader = request.getHeader("accept");
                 response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 
+                //만약  ACCEPT 값이 "application/json값이라면
                 if("application/json".equals(acceptHeader)){
+
+                    //HashMap을 만들어서 error값을 담을 errorResult를 만들어.
                     Map<String, Object> errorResult = new HashMap<>();
+
+                    //errorResult에 ex값이랑 message 를 넣어서 error를 보관해라.
                     errorResult.put("ex", ex.getClass());
                     errorResult.put("message", ex.getMessage());
+
                     String result = objectMapper.writeValueAsString(errorResult); //json을 문자로 변경
 
                     response.setContentType("application/json");

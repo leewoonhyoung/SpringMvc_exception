@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @Slf4j
-@RestControllerAdvice
+@RestControllerAdvice //RestController vs Controller 차이처럼 ResponseBody의 유무와 같다.
 public class ExControllerAdvice {
+
+    //RestControllerAdvice를 사용하면 ApiExceptionV2Controller 에 있는 @ExceptionHandler, @ResponseStatus를 주석처리 하도록 하자
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(IllegalArgumentException.class)

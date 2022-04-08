@@ -18,6 +18,9 @@ import java.util.List;
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
+
+
+
     @Override
     public void extendHandlerExceptionResolvers(List<HandlerExceptionResolver> resolvers) {
        resolvers.add(new MyHandlerExceptionResolver());
@@ -40,7 +43,6 @@ public class WebConfig implements WebMvcConfigurer {
 
  요류 페이지 전용 필터를 적용하고싶으면
  filterRegistrationBean.setDispatcherTypes(DispatcherType.ERROR)만 적용하면 된다.
-
  */
         filterRegistrationBean.setDispatcherTypes(DispatcherType.REQUEST,DispatcherType.ERROR);
 

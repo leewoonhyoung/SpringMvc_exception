@@ -16,7 +16,6 @@ import java.util.Map;
 
 @Slf4j
 @Controller
-
 // error-page/500관련된 error-page/500 view를 호출해줘~
 public class ErrorPageController {
 
@@ -70,6 +69,7 @@ public class ErrorPageController {
         Integer statusCode = (Integer) request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
         return new ResponseEntity<>(result, HttpStatus.valueOf(statusCode));
     }
+
 
 
 }

@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class ApiExceptionV2Controller {
 
-
-
     @GetMapping("/api2/members/{id}")
     public MemberDto getMember(@PathVariable("id") String id) {
         if (id.equals("ex")) {

@@ -34,9 +34,10 @@ public class ApiExceptionV2Controller {
         return new ErrorResult("BAD", e.getMessage());
     }
 
+    //단지 ResponseEntity도 사용 가능하다라는 것을 보여줌.
+    // 위의 ErrorResult , ResponseEntity와 비교해서 공부해보자.
     @ExceptionHandler(UserException.class) // 컨트롤러 호출하는것과 매우 흡사.
     public ResponseEntity<ErrorResult> userExHandle(UserException e){
-
         log.error("[exceptionHandle] ex", e);
         ErrorResult errorResult = new ErrorResult("USER-EX", e.getMessage());
         return new ResponseEntity<>(errorResult, HttpStatus.BAD_REQUEST);

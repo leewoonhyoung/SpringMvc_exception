@@ -36,10 +36,13 @@ public class ApiExceptionV2Controller {
 
     @ExceptionHandler(UserException.class) // 컨트롤러 호출하는것과 매우 흡사.
     public ResponseEntity<ErrorResult> userExHandle(UserException e){
+
         log.error("[exceptionHandle] ex", e);
         ErrorResult errorResult = new ErrorResult("USER-EX", e.getMessage());
         return new ResponseEntity<>(errorResult, HttpStatus.BAD_REQUEST);
     }
+
+    //해외 ip 서버 error ExceptinoHandler. ResponseSatus = > 서버 에러
 
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler
@@ -60,6 +63,7 @@ public class ApiExceptionV2Controller {
         if (id.equals("user-ex")) {
             throw new UserException("사용자 오류");
         }
+
         return new MemberDto(id, "hello " + id);
     }
 

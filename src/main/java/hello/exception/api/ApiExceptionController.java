@@ -16,6 +16,8 @@ import org.springframework.web.server.ResponseStatusException;
 @RestController
 public class ApiExceptionController {
 
+
+
     @GetMapping("/api/members/{id}")
     public MemberDto getMember(@PathVariable("id") String id){
         if (id.equals("ex")){

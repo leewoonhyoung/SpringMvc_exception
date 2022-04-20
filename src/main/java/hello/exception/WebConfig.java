@@ -19,8 +19,6 @@ import java.util.List;
 public class WebConfig implements WebMvcConfigurer {
 
 
-
-
     @Override
     public void extendHandlerExceptionResolvers(List<HandlerExceptionResolver> resolvers) {
        resolvers.add(new MyHandlerExceptionResolver());

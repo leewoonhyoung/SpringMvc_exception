@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
+//이 페이지는 내가 만든 ExceptionHandler를 통해 ApiExceptionController 해결하기 위한 예제 이다.
 @Slf4j
 public class UserHandlerExceptionResolver implements HandlerExceptionResolver {
 

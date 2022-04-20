@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+
+//이 페이지는 스프링 부트에서 제공하는 BasicErrorController를 해결하기 위한 예제 이다.
 @Slf4j
 public class MyHandlerExceptionResolver implements HandlerExceptionResolver {
 

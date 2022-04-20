@@ -18,6 +18,8 @@ public class MyHandlerExceptionResolver implements HandlerExceptionResolver {
         if (ex instanceof IllegalArgumentException) {
             log.info("IllegalArgumentException resolver to 400");
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, ex.getMessage());
+
+            //ModelandView를 반환하는 이유는 Exception을 처리하고 정상 흐름처럼 변경하는 것이 목적이다!
             return new ModelAndView();
             }
 
